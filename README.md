@@ -55,7 +55,7 @@ Feel free to check the [issues page](../../issues/).
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
-
+[![freetogame|API](https://user-images.githubusercontent.com/84629565/187097678-aefa5779-97c2-46f4-9f3f-8c0ae79bf0cd.png)](https://www.freetogame.com/api-doc)
 - [Microverse](https://microverse.org)
 - Inspiration
   - [Vitor Guedes Madeira](https://github.com/Vitor-Guedes-Madeira)
