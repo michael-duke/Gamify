@@ -4,3 +4,5 @@ node_modules/
 .vscode
 #Distribution directory from Webpack
 dist/
+#REST Client
+request.http
