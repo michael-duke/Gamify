@@ -44,7 +44,7 @@ body {
 .comment-btn .tooltip, 
 .like-btn .tooltip {
   position: absolute;
-  bottom: -40px;
+  top: -40px;
   background-color: rgba(96, 96, 96, 0.9);
   color: white;
   font-size: 12px;
