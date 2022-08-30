@@ -1,4 +1,5 @@
 import DynamicGame from './dynamic-Game';
+
 const dynamicGame = new DynamicGame();
 
 export default class GameList {
