@@ -131,7 +131,7 @@
         </button>
       </div>
       <nav
-        class="flex fixed-top justify-center items-center gap-4 mt-4 sm:mt-2"
+        class="flex z-10 fixed top-0 left-0 right-0 justify-center items-center gap-4 mt-4 sm:mt-2"
       >
         <div>
           <img
@@ -147,7 +147,9 @@
             <a
               class="p-6 hover:bg-white hover:text-gamify-black hover:rounded-xl duration-300"
               href="#"
-              >Games</a
+              >Games
+              <span id="game-counter"></span>
+              </a
             >
           </li>
           <li class="">
@@ -178,10 +180,10 @@
     <!-- Modal -->
     <article
       id="modal"
-      class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center bg-blue-500/50 backdrop-blur-sm transform scale-0 transition-transform duration-300"
+      class="fixed z-20 top-0 left-0 w-screen h-screen flex items-center justify-center bg-blue-500/50 backdrop-blur-sm transform scale-0 transition-transform duration-300"
     >
       <!-- Modal content -->
-      <div class="bg-white w-3/5 overflow-y-scroll h-96 mt-28">
+      <div class="bg-white w-3/5 sm:w-full sm:mx-2 overflow-y-scroll h-96 mt-28 sm:mt-16">
         <!--Close modal button-->
         <button id="closebutton" type="button" class="p-2 hover:bg-slate-300">
           <!-- Hero icon - close button -->
@@ -209,11 +211,16 @@
         
         <div class="flex justify-center flex-col items-center">
           <h2
-            class="self-center sm:self-start mb-4 font-semibold text-2xl text-gamify-black"
+            class="comment-counter self-center mb-4 font-semibold text-2xl text-gamify-black"
           >
-            Comments(0)
+            <!-- Comment Counter generated -->
           </h2>
-          <div class="mb-3 xl:w-96">
+
+          <div class="comment-display">
+              <!-- Comments generated -->
+          </div>
+
+          <div class="mb-3 w-80 mx-auto">
             <input
               type="text"
               class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -221,7 +228,7 @@
               placeholder="Your name"
             />
           </div>
-          <div class="mb-3 xl:w-96">
+          <div class="mb-3 w-80 mx-auto">
             <textarea
               class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="user-comment"
