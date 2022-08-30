@@ -3,6 +3,8 @@ import Comment from './comment';
 const comment = new Comment();
 export default class DynamicGame {
   renderCards(games) {
+    const gameCounter = document.getElementById('game-counter');
+    gameCounter.textContent = ` (${games.length})`;
     const gamesHolder = document.querySelector('.game-list');
     gamesHolder.innerHTML = '';
 
@@ -75,20 +77,55 @@ export default class DynamicGame {
     });
   }
 
-  rendePopup(id) {
+  // Render the comments dynamically
+  
+  rendePopup = async (id) => {
     console.log(id);
     const modal = document.getElementById('modal');
     const gameDesc = modal.querySelector('.game-desc');
     gameDesc.textContent = `Game ID: ${id}`;
 
-    comment.getComments(id);
-    console.log(this.renderGame(id))
+    const commentDisplay = document.querySelector('.comment-display');
+    commentDisplay.innerHTML = '';
+    const commentCounter = document.querySelector('.comment-counter');
+
+    const gameComments = await comment.getComments(id);
+
+    if (Array.isArray(gameComments)) {
+      const counter = gameComments.length;
+      commentCounter.textContent = `Comments (${counter})`;
+
+      gameComments.forEach((gamecomment) => {
+        const { comment, creation_date: date, username } = gamecomment;
+
+        const user = document.createElement('span');
+        user.textContent = username;
+
+        const reply = document.createElement('span');
+        reply.textContent = comment;
+
+        const postDate = document.createElement('span');
+        postDate.textContent = date;
+
+        const commentContainer = document.createElement('h3');
+        commentContainer.append(user, reply, postDate);
+
+        commentDisplay.appendChild(commentContainer);
+      });
+    } else {
+      const message = document.createElement('h3');
+      message.textContent = gameComments;
+      commentDisplay.appendChild(message);
+      commentCounter.textContent = 'Comments (0)';
+    }
+
+    console.log(this.renderGame(id));
 
     const commentBtn = modal.querySelector('.add-comment');
     commentBtn.onclick = () => comment.getInput(id);
     modal.classList.remove('scale-0');
     modal.classList.add('scale-100');
-  }
+  };
 
   renderGame = async (gameID) => {
     const url = `https://free-to-play-games-database.p.rapidapi.com/api/game?id=${gameID}`;
@@ -103,5 +140,5 @@ export default class DynamicGame {
     const data = await fetch(url, options);
     const res = await data.json();
     return res;
-  }
+  };
 }
