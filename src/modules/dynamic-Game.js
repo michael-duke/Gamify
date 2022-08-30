@@ -82,10 +82,26 @@ export default class DynamicGame {
     gameDesc.textContent = `Game ID: ${id}`;
 
     comment.getComments(id);
+    console.log(this.renderGame(id))
 
     const commentBtn = modal.querySelector('.add-comment');
     commentBtn.onclick = () => comment.getInput(id);
     modal.classList.remove('scale-0');
     modal.classList.add('scale-100');
+  }
+
+  renderGame = async (gameID) => {
+    const url = `https://free-to-play-games-database.p.rapidapi.com/api/game?id=${gameID}`;
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
+        'X-RapidAPI-Key': '453f81df11mshba8fa41bb162304p159da5jsn21e417a6277a',
+      },
+    };
+
+    const data = await fetch(url, options);
+    const res = await data.json();
+    return res;
   }
 }
