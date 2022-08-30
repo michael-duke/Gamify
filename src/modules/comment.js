@@ -17,16 +17,22 @@ export default class Comment {
         'Content-Type': 'application/json; charset=UTF-8',
       },
     });
-    const {status} = await comment;
+    const { status } = comment;
     console.log(status);
   };
 
   getComments = async (gameID) => {
-    const commment = await fetch(
+    const response = await fetch(
       `${this.url}${this.id}/comments?item_id=${gameID}`
     );
-    const response = await commment.json();
-    console.log(response);
+    const { status } = response;
+    const comments = await response.json();
+
+    if (status === 400) {
+      return 'No comments on this game yet. 😄 Be the first';
+    }
+
+    return comments;
   };
 
   getInput(gameID) {
@@ -41,7 +47,7 @@ export default class Comment {
       this.comment = comment;
       this.size++;
 
-      const obj = { item_id: `${gameID}`, username: name, comment: comment };
+      const obj = { item_id: gameID, username: name, comment: comment };
 
       this.postComment(obj);
 
