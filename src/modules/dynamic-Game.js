@@ -81,11 +81,11 @@ export default class DynamicGame {
     const gameDesc = modal.querySelector('.game-desc');
     gameDesc.textContent = `Game ID: ${id}`;
 
-    comment.getComments(id)
+    comment.getComments(id);
 
     const commentBtn = modal.querySelector('.add-comment');
-    commentBtn.onclick = () => comment.getInput();
+    commentBtn.onclick = () => comment.getInput(id);
     modal.classList.remove('scale-0');
-    modal.classList.add('scale-100')
+    modal.classList.add('scale-100');
   }
 }
