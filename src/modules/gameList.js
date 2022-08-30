@@ -15,7 +15,6 @@ export default class GameList {
   fetchGameList = async () => {
     const options = {
       method: 'GET',
-      url: this.url,
       headers: {
         'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
         'X-RapidAPI-Key': '453f81df11mshba8fa41bb162304p159da5jsn21e417a6277a',
