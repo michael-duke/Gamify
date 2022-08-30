@@ -35,13 +35,14 @@ body {
 }
 
 .like-btn svg {
-  transition: stroke .08s;
+  transition: stroke 0.08s;
 }
 
 .like-btn:hover svg {
   stroke: white;
 }
-.comment-btn .tooltip, 
+
+.comment-btn .tooltip,
 .like-btn .tooltip {
   position: absolute;
   top: -40px;
