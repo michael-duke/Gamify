@@ -29,6 +29,40 @@ body {
   border-radius: 1rem;
 }
 
+.game-list {
+  grid-template-columns: repeat(auto-fit, 21.875rem);
+  justify-content: center;
+}
+
+.like-btn svg {
+  transition: stroke 0.08s;
+}
+
+.like-btn:hover svg {
+  stroke: white;
+}
+
+.comment-btn .tooltip,
+.like-btn .tooltip {
+  position: absolute;
+  top: -40px;
+  background-color: rgba(96, 96, 96, 0.9);
+  color: white;
+  font-size: 12px;
+  padding: 8px;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.15s;
+  line-height: 1.5;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.comment-btn:hover .tooltip,
+.like-btn:hover .tooltip {
+  opacity: 0.9;
+}
+
 /* Scrollbar section */
 ::-webkit-scrollbar {
   width: 0.5625rem;
