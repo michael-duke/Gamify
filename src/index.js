@@ -7,7 +7,6 @@ const gameList = new GameList();
 gameList.loadGames();
 
 // Modal Action
-const closebutton = document.getElementById('closebutton');
 const modal = document.getElementById('modal');
 modal.onclick = (e) => {
   const { target: { nodeName } } = e;
@@ -16,6 +15,8 @@ modal.onclick = (e) => {
     modal.classList.add('scale-0');
   }
 };
+
+const closebutton = document.getElementById('closebutton');
 closebutton.onclick = () => {
   modal.classList.add('scale-0');
   modal.classList.remove('scale-100');

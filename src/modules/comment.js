@@ -2,7 +2,6 @@ export default class Comment {
   constructor() {
     this.user = null;
     this.comment = null;
-    this.size = 0;
     this.url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
     this.id = '22Ab6ceHbnol5078nhbR';
   }
@@ -31,7 +30,7 @@ export default class Comment {
     return comments;
   };
 
-  getInput(gameID) {
+  getInput = async (gameID) => {
     const userName = document.getElementById('user-name');
     const userComment = document.getElementById('user-comment');
 
@@ -48,12 +47,48 @@ export default class Comment {
         comment,
       };
 
-      this.postComment(newComment);
+      await this.postComment(newComment);
+
+      await this.renderComments(gameID);
 
       userName.value = '';
       userComment.value = '';
     }
+  };
 
-    // return {name, comment};
+  renderComments = async (id) => {
+    const gameComments = await this.getComments(id);
+
+    const commentDisplay = document.querySelector('.comment-display');
+    commentDisplay.innerHTML = '';
+    const commentCounter = document.querySelector('.comment-counter');
+
+    if (Array.isArray(gameComments)) {
+      const counter = gameComments.length;
+      commentCounter.textContent = `Comments (${counter})`;
+
+      gameComments.forEach((gamecomment) => {
+        const { comment, creation_date: date, username } = gamecomment;
+
+        const user = document.createElement('span');
+        user.textContent = username;
+
+        const reply = document.createElement('span');
+        reply.textContent = comment;
+
+        const postDate = document.createElement('span');
+        postDate.textContent = date;
+
+        const commentContainer = document.createElement('h3');
+        commentContainer.append(user, reply, postDate);
+
+        commentDisplay.appendChild(commentContainer);
+      });
+    } else {
+      const message = document.createElement('h3');
+      message.textContent = gameComments;
+      commentDisplay.appendChild(message);
+      commentCounter.textContent = 'Comments (0)';
+    }
   }
 }
