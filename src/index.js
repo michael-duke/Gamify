@@ -20,5 +20,4 @@ modal.onclick = (e) => {
 closebutton.onclick = () => {
    modal.classList.add('scale-0');
    modal.classList.remove('scale-100');
-   console.log(modal.classList)
 }
