@@ -10,7 +10,7 @@ export default class GameList {
 
   loadGames = async () => {
     this.games = await this.fetchGameList();
-    dynamicGame.renderCards(this.games);
+    await dynamicGame.renderCards(this.games);
   };
 
   fetchGameList = async () => {
