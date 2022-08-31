@@ -6,7 +6,7 @@ const like = new Like();
 export default class DynamicGame {
   renderCards = async (games) => {
     const gameCounter = document.getElementById('game-counter');
-    gameCounter.textContent = ` (${games.length})`;
+    gameCounter.textContent = ` (${this.gameCounter(games)})`;
 
     const gamesHolder = document.querySelector('.game-list');
     gamesHolder.innerHTML = '';
@@ -82,6 +82,8 @@ export default class DynamicGame {
       gamesHolder.appendChild(card);
     });
   };
+
+  gameCounter = (games) => games.length;
 
   rendePopup = async (id) => {
     const modal = document.getElementById('modal');
