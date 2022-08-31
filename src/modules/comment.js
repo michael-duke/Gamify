@@ -71,16 +71,20 @@ export default class Comment {
         const { comment, creation_date: date, username } = gamecomment;
 
         const user = document.createElement('span');
-        user.textContent = username;
+        user.classList = 'font-semibold ml-3';
+        user.textContent = `${username} :`;
 
         const reply = document.createElement('span');
+        reply.classList = 'text-gray-600 italic ml-3';
         reply.textContent = comment;
 
         const postDate = document.createElement('span');
+        postDate.classList = 'text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-gray-200 text-gray-700 rounded';
         postDate.textContent = date;
 
         const commentContainer = document.createElement('h3');
-        commentContainer.append(user, reply, postDate);
+        commentContainer.classList = 'flex mt-2';
+        commentContainer.append(postDate, user, reply);
 
         commentDisplay.appendChild(commentContainer);
       });
@@ -90,5 +94,5 @@ export default class Comment {
       commentDisplay.appendChild(message);
       commentCounter.textContent = 'Comments (0)';
     }
-  }
+  };
 }
