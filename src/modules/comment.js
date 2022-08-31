@@ -62,11 +62,11 @@ export default class Comment {
     const commentDisplay = document.querySelector('.comment-display');
     commentDisplay.innerHTML = '';
     const commentCounter = document.querySelector('.comment-counter');
+    commentCounter.textContent = `Comments (${this.commentCounter(
+      gameComments,
+    )})`;
 
     if (Array.isArray(gameComments)) {
-      const counter = gameComments.length;
-      commentCounter.textContent = `Comments (${counter})`;
-
       gameComments.forEach((gamecomment) => {
         const { comment, creation_date: date, username } = gamecomment;
 
@@ -92,7 +92,8 @@ export default class Comment {
       const message = document.createElement('h3');
       message.textContent = gameComments;
       commentDisplay.appendChild(message);
-      commentCounter.textContent = 'Comments (0)';
     }
   };
+
+  commentCounter = (games) => (Array.isArray(games) ? games.length : 0);
 }
