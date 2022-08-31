@@ -2,8 +2,7 @@ export default class Comment {
   constructor() {
     this.user = null;
     this.comment = null;
-    this.url =
-      'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
+    this.url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
     this.id = '22Ab6ceHbnol5078nhbR';
   }
 
@@ -19,7 +18,7 @@ export default class Comment {
 
   getComments = async (gameID) => {
     const response = await fetch(
-      `${this.url}${this.id}/comments?item_id=${gameID}`
+      `${this.url}${this.id}/comments?item_id=${gameID}`,
     );
     const { status } = response;
     const comments = await response.json();
@@ -64,7 +63,7 @@ export default class Comment {
     commentDisplay.innerHTML = '';
     const commentCounter = document.querySelector('.comment-counter');
     commentCounter.textContent = `Comments (${this.commentCounter(
-      gameComments
+      gameComments,
     )})`;
 
     if (Array.isArray(gameComments)) {
@@ -80,8 +79,7 @@ export default class Comment {
         reply.textContent = comment;
 
         const postDate = document.createElement('span');
-        postDate.classList =
-          'text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-gray-200 text-gray-700 rounded';
+        postDate.classList = 'text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-gray-200 text-gray-700 rounded';
         postDate.textContent = date;
 
         const commentContainer = document.createElement('h3');

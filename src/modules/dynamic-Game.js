@@ -12,14 +12,15 @@ export default class DynamicGame {
     gamesHolder.innerHTML = '';
 
     games.forEach(async (game) => {
-      const { id, title, short_description: desc, thumbnail } = game;
+      const {
+        id, title, short_description: desc, thumbnail,
+      } = game;
 
       const card = document.createElement('div');
       card.className = 'flex';
 
       const cardInfo = document.createElement('div');
-      cardInfo.classList =
-        'rounded-lg flex flex-col justify-between shadow-lg bg-white max-w-sm';
+      cardInfo.classList = 'rounded-lg flex flex-col justify-between shadow-lg bg-white max-w-sm';
 
       const thumbnailAnchor = document.createElement('a');
       thumbnailAnchor.setAttribute('data-mdb-ripple', true);
@@ -40,15 +41,13 @@ export default class DynamicGame {
       cardDesc.append(gameTitle, gameDesc);
 
       const cardAction = document.createElement('div');
-      cardAction.classList =
-        'action-bar flex justify-center w-full h-8 items-center py-8 gap-4';
+      cardAction.classList = 'action-bar flex justify-center w-full h-8 items-center py-8 gap-4';
 
       const commentDiv = document.createElement('div');
       commentDiv.classList = 'w-12';
 
       const commentBtn = document.createElement('button');
-      commentBtn.classList =
-        'comment-btn flex flex-col justify-center items-center relative p-1 w-fit text-white font-medium leading-tight rounded-full uppercase hover:bg-blue-200 hover:border  hover:shadow-lg active:shadow-lg transition-colors duration-150 ease-in-out';
+      commentBtn.classList = 'comment-btn flex flex-col justify-center items-center relative p-1 w-fit text-white font-medium leading-tight rounded-full uppercase hover:bg-blue-200 hover:border  hover:shadow-lg active:shadow-lg transition-colors duration-150 ease-in-out';
       // commentBtn.setAttribute('@click', 'showModal1 = true');
       commentBtn.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 stroke-gamify-black">
@@ -63,8 +62,7 @@ export default class DynamicGame {
       likeDiv.classList = 'w-12 flex items-center gap-2';
 
       const likeBtn = document.createElement('button');
-      likeBtn.classList =
-        'like-btn flex flex-col justify-center items-center relative p-1 w-fit text-white font-medium leading-tight rounded-full uppercase hover:bg-red-400 hover:border  hover:shadow-lg active:shadow-lg transition-colors duration-150 ease-in-out';
+      likeBtn.classList = 'like-btn flex flex-col justify-center items-center relative p-1 w-fit text-white font-medium leading-tight rounded-full uppercase hover:bg-red-400 hover:border  hover:shadow-lg active:shadow-lg transition-colors duration-150 ease-in-out';
       likeBtn.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 stroke-gamify-black">
         <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
@@ -129,8 +127,7 @@ export default class DynamicGame {
     } = game;
 
     const gameTitle = document.createElement('a');
-    gameTitle.classList =
-      'font-semibold text-2xl mb-3 hover:underline decoration-gamify-red decoration-4 underline-offset-8 cursor-pointer';
+    gameTitle.classList = 'font-semibold text-2xl mb-3 hover:underline decoration-gamify-red decoration-4 underline-offset-8 cursor-pointer';
     gameTitle.innerText = title;
     gameTitle.href = link;
     gameTitle.target = '_blank';
@@ -140,8 +137,7 @@ export default class DynamicGame {
     thumbnail.src = gameImage;
 
     if (screenshots.length !== 0) {
-      const { image } =
-        screenshots[Math.floor(Math.random() * screenshots.length)];
+      const { image } = screenshots[Math.floor(Math.random() * screenshots.length)];
       thumbnail.src = image;
     }
 
@@ -158,7 +154,7 @@ export default class DynamicGame {
       'beforeend',
       `
     &#8227; Genre : <span class="ml-2 text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-sky-500 text-white rounded-full">${genre}</span>
-    `
+    `,
     );
 
     const gamePlatform = document.createElement('h3');
@@ -167,7 +163,7 @@ export default class DynamicGame {
       'beforeend',
       `
     &#8227; Platform : <span class="align-middle text-xs py-1.5 px-2.5 leading-none text-center whitespace-nowrap font-bold bg-amber-600 text-white rounded">${platform}</span>
-    `
+    `,
     );
     const releaseDate = document.createElement('h3');
     releaseDate.classList = 'font-semibold text-xl';
@@ -175,12 +171,11 @@ export default class DynamicGame {
       'beforeend',
       `
     &#8227; Release Date : <span class="align-middle text-xs py-1.5 px-2.5 leading-none text-center whitespace-nowrap font-bold bg-slate-500 text-white rounded">${date}</span>
-    `
+    `,
     );
 
     const minHeader = document.createElement('span');
-    minHeader.classList =
-      'px-4 py-2 mt-3 mb-1 rounded-full text-gray-500 bg-gray-200 font-semibold text-md flex align-center w-max cursor-pointer active:bg-gray-300 transition duration-300 ease';
+    minHeader.classList = 'px-4 py-2 mt-3 mb-1 rounded-full text-gray-500 bg-gray-200 font-semibold text-md flex align-center w-max cursor-pointer active:bg-gray-300 transition duration-300 ease';
     minHeader.innerText = 'Minimum Requirements';
 
     const minimumReqOl = document.createElement('ol');
