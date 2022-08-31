@@ -182,7 +182,7 @@
     >
       <!-- Modal content -->
       <div
-        class="bg-white w-3/5 sm:w-full sm:mx-2 overflow-y-scroll h-96 mt-28 sm:mt-16"
+        class="bg-white w-3/5 sm:w-full sm:mx-2 overflow-y-scroll h-96 sm:mt-16"
       >
         <!--Close modal button-->
         <button id="closebutton" type="button" class="p-2 hover:bg-slate-300">
@@ -203,11 +203,9 @@
           </svg>
         </button>
         <!-- Test content for linters-->
-        <p class="game-desc p-12">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus
-          placeat maiores repudiandae, error perferendis inventore aspernatur
-          voluptatum omnis sint debitis!
-        </p>
+        <div id="game-info" class="flex flex-col items-center">
+          <!-- Generate Game Details on Pop up -->
+        </div>
 
         <div class="flex justify-center flex-col items-center">
           <h2
@@ -217,32 +215,41 @@
             <!-- Comment Counter generated -->
           </h2>
 
-          <div class="comment-display">
+          <div
+            class="comment-display p-2 border flex flex-col mx-2"
+          >
             <!-- Comments generated -->
           </div>
 
-          <div class="mb-3 w-80 mx-auto">
-            <input
-              type="text"
-              class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="user-name"
-              placeholder="Your name"
-            />
+          <div class="mt-3 flex flex-col w-fit mx-auto">
+            <h2
+              class="self-center mb-2 font-semibold text-xl text-gamify-black"
+            >
+              Add your comment
+            </h2>
+            <div class="mt-2 mb-3 w-64 self-start">
+              <input
+                type="text"
+                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                id="user-name"
+                placeholder="Your name"
+              />
+            </div>
+            <div class="mb-3 w-80 mx-auto">
+              <textarea
+                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                id="user-comment"
+                rows="5"
+                placeholder="Your comment about this game"
+              ></textarea>
+            </div>
+            <button
+              type="button"
+              class="add-comment self-start mb-4 shadow-3D bg-gamify-red text-white rounded px-4 py-2 active:ml-2 active:mt-[5px] active:shadow-none transition-[margin box-shadow] duration-75"
+            >
+              Comment
+            </button>
           </div>
-          <div class="mb-3 w-80 mx-auto">
-            <textarea
-              class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="user-comment"
-              rows="3"
-              placeholder="Your comment about this game"
-            ></textarea>
-          </div>
-          <button
-            type="button"
-            class="add-comment mb-4 mr-4 shadow-3D bg-gamify-red text-white rounded px-4 py-2 active:mr-3 active:mt-[5px] active:shadow-none transition-[margin box-shadow] duration-75"
-          >
-            Comment
-          </button>
         </div>
       </div>
     </article>

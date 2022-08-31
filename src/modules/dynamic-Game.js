@@ -5,6 +5,7 @@ export default class DynamicGame {
   renderCards(games) {
     const gameCounter = document.getElementById('game-counter');
     gameCounter.textContent = ` (${games.length})`;
+
     const gamesHolder = document.querySelector('.game-list');
     gamesHolder.innerHTML = '';
 
@@ -75,51 +76,15 @@ export default class DynamicGame {
     });
   }
 
-  // Render the comments dynamically
-
   rendePopup = async (id) => {
     const modal = document.getElementById('modal');
-    const gameDesc = modal.querySelector('.game-desc');
-    gameDesc.textContent = `Game ID: ${id}`;
 
-    const commentDisplay = document.querySelector('.comment-display');
-    commentDisplay.innerHTML = '';
-    const commentCounter = document.querySelector('.comment-counter');
-
-    const gameComments = await comment.getComments(id);
-
-    if (Array.isArray(gameComments)) {
-      const counter = gameComments.length;
-      commentCounter.textContent = `Comments (${counter})`;
-
-      gameComments.forEach((gamecomment) => {
-        const { comment, creation_date: date, username } = gamecomment;
-
-        const user = document.createElement('span');
-        user.textContent = username;
-
-        const reply = document.createElement('span');
-        reply.textContent = comment;
-
-        const postDate = document.createElement('span');
-        postDate.textContent = date;
-
-        const commentContainer = document.createElement('h3');
-        commentContainer.append(user, reply, postDate);
-
-        commentDisplay.appendChild(commentContainer);
-      });
-    } else {
-      const message = document.createElement('h3');
-      message.textContent = gameComments;
-      commentDisplay.appendChild(message);
-      commentCounter.textContent = 'Comments (0)';
-    }
-
-    // console.log(this.renderGame(id));
+    await this.renderGame(id);
+    await comment.renderComments(id);
 
     const commentBtn = modal.querySelector('.add-comment');
     commentBtn.onclick = () => comment.getInput(id);
+
     modal.classList.remove('scale-0');
     modal.classList.add('scale-100');
   };
@@ -134,8 +99,92 @@ export default class DynamicGame {
       },
     };
 
-    const data = await fetch(url, options);
-    const res = await data.json();
-    return res;
+    const response = await fetch(url, options);
+    const game = await response.json();
+
+    const gameInfo = document.getElementById('game-info');
+    gameInfo.innerHTML = '';
+
+    const {
+      title,
+      description,
+      thumbnail: gameImage,
+      game_url: link,
+      genre,
+      platform,
+      release_date: date,
+      minimum_system_requirements: sysReq,
+      screenshots,
+    } = game;
+
+    const gameTitle = document.createElement('a');
+    gameTitle.classList = 'font-semibold text-2xl mb-3 hover:underline decoration-gamify-red decoration-4 underline-offset-8 cursor-pointer';
+    gameTitle.innerText = title;
+    gameTitle.href = link;
+    gameTitle.target = '_blank';
+
+    const thumbnail = document.createElement('img');
+    thumbnail.classList = 'px-12 rounded-md object-cover';
+    thumbnail.src = gameImage;
+
+    if (screenshots.length !== 0) {
+      const { image } = screenshots[Math.floor(Math.random() * screenshots.length)];
+      thumbnail.src = image;
+    }
+
+    const gameDesc = document.createElement('p');
+    gameDesc.classList = 'game-desc p-12';
+    gameDesc.textContent = description;
+
+    const gameDetail = document.createElement('div');
+    gameDetail.classList = 'self-start pl-12';
+
+    const tag = document.createElement('h3');
+    tag.classList = 'font-semibold text-xl flex items-center';
+    tag.insertAdjacentHTML(
+      'beforeend',
+      `
+    &#8227; Genre : <span class="ml-2 text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-sky-500 text-white rounded-full">${genre}</span>
+    `,
+    );
+
+    const gamePlatform = document.createElement('h3');
+    gamePlatform.classList = 'font-semibold text-xl';
+    gamePlatform.insertAdjacentHTML(
+      'beforeend',
+      `
+    &#8227; Platform : <span class="align-middle text-xs py-1.5 px-2.5 leading-none text-center whitespace-nowrap font-bold bg-amber-600 text-white rounded">${platform}</span>
+    `,
+    );
+    const releaseDate = document.createElement('h3');
+    releaseDate.classList = 'font-semibold text-xl';
+    releaseDate.insertAdjacentHTML(
+      'beforeend',
+      `
+    &#8227; Release Date : <span class="align-middle text-xs py-1.5 px-2.5 leading-none text-center whitespace-nowrap font-bold bg-slate-500 text-white rounded">${date}</span>
+    `,
+    );
+
+    const minHeader = document.createElement('span');
+    minHeader.classList = 'px-4 py-2 mt-3 mb-1 rounded-full text-gray-500 bg-gray-200 font-semibold text-md flex align-center w-max cursor-pointer active:bg-gray-300 transition duration-300 ease';
+    minHeader.innerText = 'Minimum Requirements';
+
+    const minimumReqOl = document.createElement('ol');
+    minimumReqOl.classList = 'list-disc ml-3';
+    minimumReqOl.insertAdjacentHTML('beforeend', '<span> None 😁Enjoy Online');
+    if (sysReq) {
+      minimumReqOl.innerHTML = '';
+      const requirements = Object.keys(sysReq);
+
+      requirements.forEach((requirement) => {
+        const li = document.createElement('li');
+        li.classList = '';
+        li.innerText = `${requirement} : ${sysReq[requirement]}`;
+        minimumReqOl.appendChild(li);
+      });
+    }
+
+    gameDetail.append(tag, gamePlatform, releaseDate, minHeader, minimumReqOl);
+    gameInfo.append(gameTitle, thumbnail, gameDesc, gameDetail);
   };
 }

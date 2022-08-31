@@ -2,7 +2,6 @@ export default class Comment {
   constructor() {
     this.user = null;
     this.comment = null;
-    this.size = 0;
     this.url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
     this.id = '22Ab6ceHbnol5078nhbR';
   }
@@ -31,7 +30,7 @@ export default class Comment {
     return comments;
   };
 
-  getInput(gameID) {
+  getInput = async (gameID) => {
     const userName = document.getElementById('user-name');
     const userComment = document.getElementById('user-comment');
 
@@ -48,12 +47,52 @@ export default class Comment {
         comment,
       };
 
-      this.postComment(newComment);
+      await this.postComment(newComment);
+
+      await this.renderComments(gameID);
 
       userName.value = '';
       userComment.value = '';
     }
+  };
 
-    // return {name, comment};
-  }
+  renderComments = async (id) => {
+    const gameComments = await this.getComments(id);
+
+    const commentDisplay = document.querySelector('.comment-display');
+    commentDisplay.innerHTML = '';
+    const commentCounter = document.querySelector('.comment-counter');
+
+    if (Array.isArray(gameComments)) {
+      const counter = gameComments.length;
+      commentCounter.textContent = `Comments (${counter})`;
+
+      gameComments.forEach((gamecomment) => {
+        const { comment, creation_date: date, username } = gamecomment;
+
+        const user = document.createElement('span');
+        user.classList = 'font-semibold ml-3';
+        user.textContent = `${username} :`;
+
+        const reply = document.createElement('span');
+        reply.classList = 'text-gray-600 italic ml-3';
+        reply.textContent = comment;
+
+        const postDate = document.createElement('span');
+        postDate.classList = 'text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-gray-200 text-gray-700 rounded';
+        postDate.textContent = date;
+
+        const commentContainer = document.createElement('h3');
+        commentContainer.classList = 'flex mt-2';
+        commentContainer.append(postDate, user, reply);
+
+        commentDisplay.appendChild(commentContainer);
+      });
+    } else {
+      const message = document.createElement('h3');
+      message.textContent = gameComments;
+      commentDisplay.appendChild(message);
+      commentCounter.textContent = 'Comments (0)';
+    }
+  };
 }
