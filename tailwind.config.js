@@ -6,16 +6,16 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['COCOGOOSE', 'sans-serif'],
+        sans: ['Montserrat', 'sans-serif'],
         nunito: ['nunito', 'sans-serif'],
-        montserrat: ['Montserrat', 'sans-serif'],
       },
       screens: {
         sm: { max: '768px' },
         ms: { max: '1212px' },
       },
       colors: {
-        'regal-beige': '#f1f5dc',
+        'gamify-black': '#2E2B2B',
+        'gamify-red': '#C21010'
       },
     },
   },
