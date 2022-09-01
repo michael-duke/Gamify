@@ -23,7 +23,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.nav-link:hover a {
+.nav-link.active {
   color: #2e2b2b;
   background-color: white;
   border-radius: 1rem;
