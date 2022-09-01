@@ -37,7 +37,7 @@ Have NodeJS installed and follow the next steps
 - Twitter: [@MikeDuke21](https://twitter.com/MikeDuke21)
 - LinkedIn: [MICHAEL MESFIN](https://www.linkedin.com/in/michael-21-duke/)
 
-👤 **Author2**
+👤 **Makoji David**
 
 - GitHub: [@aceDavon](https://github.com/aceDavon)
 - Twitter: [@sharkleshevons](https://twitter.com/sharkleshevon)
