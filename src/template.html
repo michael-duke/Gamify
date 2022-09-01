@@ -109,8 +109,8 @@
           <span class="visually-hidden">Next</span>
         </button>
         <a
-          href="#games-display"
-          class="absolute bottom-4 left-2/4 justify-center border-gamify-red rounded-full border-2 p-2 bg-white/30 backdrop-blur-md animate-bounce"
+          href="#content"
+          class="absolute sm:hidden bottom-4 left-2/4 justify-center border-gamify-red rounded-full border-2 p-2 bg-white/30 backdrop-blur-md animate-bounce"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +129,7 @@
         </a>
       </div>
       <nav
-        class="flex z-10 fixed top-0 left-0 right-0 justify-center items-center gap-4 mt-4 sm:mt-2"
+        class="flex z-10 fixed top-0 left-0 right-0 justify-center sm:flex-col items-center gap-4 mt-4 sm:mt-2"
       >
         <div>
           <img
@@ -139,27 +139,27 @@
           />
         </div>
         <ul
-          class="flex overflow-hidden gap-4 font-semibold text-2xl rounded-lg px-8 py-6 w-fit text-slate-100 bg-black/30 backdrop-blur-md sm:hidden"
+          class="flex items-center overflow-hidden sm:gap-1 gap-4 font-semibold sm:text-xl text-2xl rounded-2xl sm:mx-4 px-8 py-2 sm:px-2  w-fit text-slate-100 bg-black/30 backdrop-blur-md"
         >
-          <li class="">
+          <li>
             <a
-              class="p-6 hover:bg-white hover:text-gamify-black hover:rounded-xl duration-300"
-              href="#"
+              class="nav-link flex active p-6 pr-4 hover:bg-white hover:text-gamify-black hover:rounded-xl duration-300"
+              href="#content"
               >Games
               <span id="game-counter"></span>
             </a>
           </li>
-          <li class="">
+          <li>
             <a
-              class="p-6 hover:bg-white hover:text-gamify-black hover:rounded-xl duration-300"
-              href="#"
+              class="nav-link flex p-6 hover:bg-white hover:text-gamify-black hover:rounded-xl duration-300"
+              href="#content"
               >Trailers</a
             >
           </li>
           <li class="">
             <a
-              class="p-6 hover:bg-white hover:text-gamify-black hover:rounded-xl duration-300"
-              href="#"
+              class="nav-link p-6 hover:bg-white hover:text-gamify-black hover:rounded-xl duration-300"
+              href="#content"
               >Contact</a
             >
           </li>
@@ -167,11 +167,10 @@
       </nav>
     </header>
     <main>
-      <section id="games-display">
-        <h2 class="text-[0px] visually-hidden">List of games</h2>
-        <div class="game-list mt-12 grid gap-4">
-          <!-- Generated -->
-        </div>
+      <section id="content">
+        <h2 class="text-[0px] visually-hidden">List of games, trailers or Contact</h2>
+
+        <!-- Generated -->
       </section>
     </main>
 
@@ -215,9 +214,7 @@
             <!-- Comment Counter generated -->
           </h2>
 
-          <div
-            class="comment-display p-2 border flex flex-col mx-2"
-          >
+          <div class="comment-display p-2 border flex flex-col mx-2">
             <!-- Comments generated -->
           </div>
 
@@ -260,7 +257,7 @@
       <p>
         Created by
         <a
-          class="text-gamify-red font-semibold"
+          class="text-gamify-red/70 font-semibold"
           href="https://github.com/aceDavon"
           target="_blank"
           rel="noopener"
@@ -268,7 +265,7 @@
         >
         and
         <a
-          class="font-semibold"
+          class="font-semibold text-slate-600"
           href="https://github.com/michael-duke"
           target="_blank"
           rel="noopener"
