@@ -29,6 +29,12 @@ body {
   border-radius: 1rem;
 }
 
+.nav-link.active-nav {
+  color: #2e2b2b;
+  background-color: white;
+  border-radius: 1rem;
+}
+
 .game-list {
   grid-template-columns: repeat(auto-fit, 21.875rem);
   justify-content: center;
@@ -61,6 +67,10 @@ body {
 .comment-btn:hover .tooltip,
 .like-btn:hover .tooltip {
   opacity: 0.9;
+}
+
+.hide-section {
+  display: none !important;
 }
 
 /* Scrollbar section */

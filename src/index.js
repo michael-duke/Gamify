@@ -2,11 +2,22 @@ import './style.css';
 import 'tw-elements';
 
 import GameList from './modules/gameList';
+import { toggleActiveLink, singlePageNav } from './modules/spa-navigation';
 import renderTrailers from './modules/trailers';
 import renderGames from './modules/games';
 import renderContact from './modules/contact';
 
 const gameList = new GameList();
+
+gameList.loadGames();
+
+const renderPage = (page) => {
+  page();
+};
+
+renderPage(renderGames);
+renderPage(renderTrailers);
+renderPage(renderContact);
 
 // Modal Action
 const modal = document.getElementById('modal');
@@ -28,44 +39,23 @@ closebutton.onclick = () => {
 
 // Nav Action
 const tabLinks = document.querySelectorAll('.nav-link');
-const content = document.getElementById('content');
-
-const renderPage = (location, page) => {
-  location.innerHTML = '';
-  page();
-};
-
-const removeActive = () => {
-  tabLinks.forEach((link) => {
-    if (link.classList.contains('active')) {
-      link.classList.remove('active');
-    }
-  });
-};
 
 tabLinks.forEach((link) => {
   link.addEventListener('click', (e) => {
     const { target } = e;
     if (target.textContent.slice(0, 5) === 'Games') {
-      removeActive();
-      target.classList.add('active');
-      renderPage(content, renderGames);
-      gameList.loadGames();
+      toggleActiveLink();
+      singlePageNav();
     }
 
     if (target.textContent === 'Trailers') {
-      removeActive();
-      target.classList.add('active');
-      renderPage(content, renderTrailers);
+      toggleActiveLink();
+      singlePageNav();
     }
 
     if (target.textContent === 'Contact') {
-      removeActive();
-      e.target.classList.add('active');
-      renderPage(content, renderContact);
+      toggleActiveLink();
+      singlePageNav();
     }
   });
 });
-
-renderPage(content, renderGames);
-gameList.loadGames();

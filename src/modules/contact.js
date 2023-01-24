@@ -1,7 +1,7 @@
 const content = document.getElementById('content');
 
 const contact = `
-<div class="w-[900px] sm:w-screen mt-4 sm:mt-8 mx-auto p-6 shadow-lg rounded-lg bg-gray-100 text-gray-700">
+<div class="contact-us hide-section w-[900px] sm:w-screen  mt-4 sm:mt-8 mx-auto p-6 shadow-lg rounded-lg bg-gray-100 text-gray-700">
   <h2 class="font-semibold text-3xl mb-5">Hello Gamers!</h2>
   <h3 class="text-slate-600 font-bold text-lg">
     Do you have any questions or you just want to say Hello? You can reach

@@ -1,7 +1,7 @@
 const content = document.getElementById('content');
 
 const trailers = `
-<div class="trailers ml-2 mt-2 sm:mt-8 grid gap-4 grid-flow-col auto-cols-max overflow-x-scroll">
+<div class="trailers hide-section ml-2 mt-2 sm:mt-8 grid gap-4 grid-flow-col auto-cols-max overflow-x-scroll">
 <div class="flex justify-center">
   <div class="rounded-lg shadow-lg bg-white w-[450px] sm:w-[350px] h-[400px]">
     <iframe class="w-full h-2/3" src="https://www.youtube.com/embed/VbIc2_FwReE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
