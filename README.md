@@ -23,7 +23,7 @@
 ![screenshot](https://user-images.githubusercontent.com/84629565/187896127-3ac746f4-af34-4357-8c1a-1a5ffb14970e.jpg)
 ## Live Demo 
 
-:smile: enjoy [Gamify](https://michael-duke.github.io/Capstone-II/)
+:smile: enjoy [Gamify](https://michael-duke.github.io/Gamify/)
 
 ## Getting Started
 
